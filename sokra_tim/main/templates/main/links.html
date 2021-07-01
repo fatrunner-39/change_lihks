@@ -1,0 +1,24 @@
+{% extends 'main/main-layout.html' %}
+
+{% block title %}
+    Сокращение ссылок
+{% endblock %}
+
+{% block content %}
+    <div id="short-link">
+            <div class="change_url">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="buttons" id="short" type="submit">Сократить</button>
+        </form>
+    </div>
+    {% for link in new_urls %}
+
+        <div>
+            <a href="{{ link.fullurl }}" id="new-link">link/{{ link.slug }}</a>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

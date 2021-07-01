@@ -1,0 +1,27 @@
+{% extends 'main/main-layout.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="form-section">
+    <h2>Кабинет пользователя</h2>
+    <div class="register">
+      <img  style="width: 64px; height: 64px;" src="{{ user.profile.img.url }}">
+      <p>
+        <strong >@{{ user.username }}</strong>
+        <b>Email:</b> {{ user.email }}
+      </p>
+      <button class="buttons"><a  id="exit" href="{% url 'exit' %}">Выйти</a></button>
+    </div>
+    <div class="register">
+      <h3>Изменить данные про пользователя</h3>
+      <form class="register" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ update_user.as_p }}
+        {{ img_profile }}
+        <button id="updatebtn" type="submit" class="buttons">Обновить данные</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

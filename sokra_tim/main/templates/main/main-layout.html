@@ -1,0 +1,49 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/main.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="left">
+            <img id="logo" src="{% static 'main/img/logo.png' %}" alt="">
+            <a class="nav" id="name" href="{% url 'home' %}">Уберем всё лишнее из ссылки!</a>
+        </div>
+        <div class="right">
+            <a class="nav" href="{% url 'home' %}">Главная</a>
+            <a class="nav" href="#">Про нас</a>
+            {% if user.is_authenticated %}
+            <a class="nav" href="{% url 'profile' %}">Личный кабинет</a>
+            <a class="nav" href="{% url 'links' %}">Ссылки</a>
+            {% else %}
+            <a class="nav" href="{% url 'user' %}">Войти</a>
+            <a class="nav" href="{% url 'reg' %}">Регистрация</a>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div id="copyright">
+            <p id="copy">Все права защищены<i class="far fa-copyright"></i></p>
+        </div>
+        <div class="social">
+            <a href="#"><img src="{% static 'main/img/twitter.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'main/img/youtube.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'main/img/vkontakte.png' %}" alt=""></a>
+            <a href="#"><img src="{% static 'main/img/telegram.png' %}" alt=""></a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'main/main-layout.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="main-block" id="home">
+        <h1>Сокра.тим</h1>
+        <p>Быстро сократим любую длинную ссылку для вашего проекта</p>
+        <button class="buttons" id="profile"><a href="{% url 'user' %}">Кабинет пользователя</a></button>
+    </div>
+{% endblock %}
